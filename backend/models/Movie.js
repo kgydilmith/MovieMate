@@ -9,7 +9,13 @@ const movieSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    posterurl :{
+    actors:[{type:String,required:true}],
+
+    releasedate:{
+        type:Date,
+        require:true
+    },
+    posterurl:{
         type:String,
         required:true
     },
