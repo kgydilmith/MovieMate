@@ -3,30 +3,34 @@ import mongoose from "mongoose";
 const movieSchema = new mongoose.Schema({
     title:{
         type:String,
-        required:true
+        required:true,
     },
     description:{
         type:String,
-        required:true
+        required:true,
     },
     actors:[{type:String,required:true}],
 
     releasedate:{
         type:Date,
-        require:true
+        require:true,
     },
     posterurl:{
         type:String,
-        required:true
+        required:true,
     },
     featured:{
         type:Boolean,
     },
-    booking:[{type:String}],
+    bookings:[{
+        type:mongoose.Types.ObjectId,
+        ref:"Booking",
+    }],
 
     admin:{
-        type:String,
-        required:true
+        type:mongoose.Types.ObjectId,
+        ref:"Admin",
+        required:true,
     },
 });
 

@@ -1,11 +1,12 @@
 import express from "express";
-import { addmovie } from "../controllers/movie-controller.js";
-import { getmovie } from "../controllers/movie-controller.js";
+import { addmovie, getmoviesbyid } from "../controllers/movie-controller.js";
+import { getallmovies  } from "../controllers/movie-controller.js";
 
 const movieRouter =express.Router();
 
-movieRouter.get("/",getmovie);
+movieRouter.get("/",getallmovies);
+movieRouter.get("/:id",getmoviesbyid);
 movieRouter.post("/",addmovie);
 
 
-export default movieRouter; 
+export default movieRouter;  

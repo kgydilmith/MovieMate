@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 export const addAdmin = async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email && email.trim() === " " && !password && password.trim() === "") {
+  if (!email && email.trim() === "" && !password && password.trim() === "") {
     return res.status(422).json({ message: "invalid inputs" });
   }
 
@@ -40,7 +40,7 @@ export const addAdmin = async (req, res, next) => {
 export const adminlogin = async (req, res, next) => {
   const { email, password } = req.body;
 
-  if (!email && email.trim() === " " && !password && password.trim() === "") {
+  if (!email && email.trim() === "" && !password && password.trim() === "") {
     return res.status(422).json({ message:"invalid inputs" });
   }
 
@@ -67,5 +67,22 @@ export const adminlogin = async (req, res, next) => {
     expiresIn: "7d",
   });
 
-  return res.status(200).json({ message: "authentication complete",token,id:existingadmin._id});
+  return res.status(200).json({ message: "authentication complete",token,id:existingadmin._id 
+});
+};
+
+//get all users 
+
+export const getAdmin = async(req,res,next) =>{
+  let admins;
+  try{
+admins = await Admin.find();
+  }catch(err){
+return console.log(err);
+  }
+
+  if(!admins){
+    return res.status(500).json({message:"internal server error "});
+  }
+  return res.status(200).json({admins});
 };

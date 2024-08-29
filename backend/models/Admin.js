@@ -12,8 +12,10 @@ const adminSchema = new mongoose.Schema({
         require:true
     },
     addedMovies:[{
-        type:String,
-    }]
+        type:mongoose.Types.ObjectId,
+        ref:"Movie", 
+    },
+],
 });
 
 export default mongoose.model("Admin",adminSchema);
