@@ -6,7 +6,6 @@ import adminRouter from "./routes/admin-routes.js";
 import movieRouter from "./routes/movie-routes.js";
 import bookingRouter from "./routes/booking-routes.js";
 
-
 dotenv.config();
 const app = express(); // express handle all of funtion in app
 
@@ -15,14 +14,14 @@ app.use(express.json());
 app.use("/user", userRouter);
 app.use("/admin", adminRouter);
 app.use("/movie", movieRouter);
-app.use("/booking",bookingRouter)
+app.use("/booking", bookingRouter);
 
 mongoose
-  .connect( 
+  .connect(
     `mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.ay6gydy.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`
   )
   .then(() =>
-    app.listen(3000, () => console.log(" conneted to db and server is runing"))
+    app.listen(5001, () => console.log(" conneted to db and server is runing"))
   )
   .catch((e) => console.log(e));
 

@@ -9,21 +9,20 @@ import {
   Tabs,
 } from "@mui/material";
 import MovieIcon from "@mui/icons-material/Movie";
-import { getAllMovies } from "../api-helpers/api-helpers.js";
+import { getallmovies } from "../api-helpers/api-helpers.js";
 const dummyarray = ["ememory", "brahames", "grum"];
 
-
-
 const Header = () => {
-
-  const [value,setvalue] = useState(0);
-  useEffect(()=>{
-    getAllMovies().then((data)=>console.log(data)).catch(err=>console.log(err));
-  },[]);
+  const [value, setvalue] = useState(0);
+  useEffect(() => {
+    getallmovies()
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
-      <AppBar sx={{bgcolor :"#999999"}}>
+      <AppBar sx={{ bgcolor: "#999999" }}>
         <Toolbar>
           <Box width={"20%"}>
             <MovieIcon />
@@ -34,7 +33,8 @@ const Header = () => {
               freeSolo
               options={dummyarray.map((option) => option)}
               renderInput={(params) => (
-                <TextField sx={{input:{color:"white"}}}
+                <TextField
+                  sx={{ input: { color: "white" } }}
                   variant="standard"
                   {...params}
                   label="Search Acroos Movies"
@@ -44,8 +44,13 @@ const Header = () => {
           </Box>
 
           <Box display={"flex"}>
-            <Tabs textColor="inherit" indicatorcolor="secondory" value={value} onChange={(e,val)=>setvalue(val)}>
-               <Tab label="Movie " />
+            <Tabs
+              textColor="inherit"
+              indicatorcolor="secondory"
+              value={value}
+              onChange={(e, val) => setvalue(val)}
+            >
+              <Tab label="Movie " />
               <Tab label="Admin" />
               <Tab label="Auth" />
             </Tabs>
