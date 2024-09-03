@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import MovieIcon from "@mui/icons-material/Movie";
 import { getallmovies } from "../api-helpers/api-helpers.js";
+import { Link } from "react-router-dom";
 const dummyarray = ["ememory", "brahames", "grum"];
 
 const Header = () => {
@@ -22,7 +23,7 @@ const Header = () => {
 
   return (
     <div>
-      <AppBar sx={{ bgcolor: "#999999" }}>
+      <AppBar position="sticky" sx={{ bgcolor: "#999999" }}>
         <Toolbar>
           <Box width={"20%"}>
             <MovieIcon />
@@ -50,9 +51,9 @@ const Header = () => {
               value={value}
               onChange={(e, val) => setvalue(val)}
             >
-              <Tab label="Movie " />
-              <Tab label="Admin" />
-              <Tab label="Auth" />
+              <Tab LinkComponent={Link} to="/movies" label="Movies " />
+              <Tab LinkComponent={Link} to="/admin" label="Admin" />
+              <Tab LinkComponent={Link} to="/auth" label="Auth" />
             </Tabs>
           </Box>
         </Toolbar>
